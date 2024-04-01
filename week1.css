@@ -29,24 +29,23 @@
     background-color: aqua;
     text-align: center;
     line-height: 250px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
-.content{
+.content-head{
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
 }
 .content-box{
     width: 1200px;
-    background-color: gray;
     display: flex;
 }
 .small-box{
     width: 33.3%;
     height: 50px;
     background-color: bisque;
-    margin-top: 10px;
-    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     display: flex;
@@ -61,6 +60,49 @@
     line-height: 50px;
     margin-left: 10px;
 }
+.content-body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+.content-pic{
+    width: 1200px;
+    display: flex;
+}
+.big-box1{
+    width: 33.3%;
+    height: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+}
+.big-pic1{
+    background-image: url('pic.jpg');
+    width: 100%;
+    height: 120px;
+    background-size: 100%;
+}
+.big-box2{
+    width: 50%;
+    height: 120px;
+    display: flex;
+}
+.big-pic2{
+    background-image: url('pic.jpg');
+    width: 100%;
+    height: 120px;
+    background-size: 150%;
+    margin-right: 10px;
+}
+.big-pic3{
+    background-image: url('pic.jpg');
+    width: 100%;
+    height: 120px;
+    background-size: 150%;
+    margin-left: 10px;
+}
 @media(max-width:1200px){
     .list{
         flex-wrap: wrap;
@@ -68,7 +110,6 @@
     .product{
         width: 45%;
     }
-    
 }
 @media(max-width:500px){
     .headline{
