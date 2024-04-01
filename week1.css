@@ -1,0 +1,87 @@
+.top{
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.website-title{
+   justify-content: flex-start;
+   text-align: left;
+   width: 50%;
+   margin-left: 10px;
+}
+.top-item{
+    display: flex;
+    text-align: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+.item{
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+.welcome-banner{
+    height:250px;
+    font-size:2em;
+    width:100%;
+    background-color: aqua;
+    text-align: center;
+    line-height: 250px;
+    margin-bottom: 20px;
+}
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content-box{
+    width: 1200px;
+    background-color: gray;
+    display: flex;
+}
+.small-box{
+    width: 33.3%;
+    height: 50px;
+    background-color: bisque;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+}
+.small-picture{
+    background-image: url('pic.jpg');
+    width: 80px;
+    height: 50px;
+    background-size: 100%;
+}
+.small-text{
+    line-height: 50px;
+    margin-left: 10px;
+}
+@media(max-width:1200px){
+    .list{
+        flex-wrap: wrap;
+    }
+    .product{
+        width: 45%;
+    }
+    
+}
+@media(max-width:500px){
+    .headline{
+        font-size: 20px;
+    }
+    .desktop-menu{
+        display: none;
+    }
+    .mobile-menu{
+        display: block;
+    }
+    .product{
+        width: 90%;
+    }
+    
+}
