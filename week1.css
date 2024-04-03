@@ -50,11 +50,20 @@
     margin-right: 10px;
     display: flex;
 }
+.small-box1{
+    width: 33.3%;
+    height: 50px;
+    background-color: bisque;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+}
 .small-picture{
     background-image: url('pic.jpg');
     width: 80px;
     height: 50px;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .small-text{
     line-height: 50px;
@@ -77,12 +86,32 @@
     margin-left: 10px;
     margin-right: 10px;
     display: flex;
+    position: relative;
+}
+.text-pic{
+    position: absolute;
+    bottom:0;
+    color: black;
+    background-color: rgba(127, 255, 212, 0.5);
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .big-pic1{
     background-image: url('pic.jpg');
     width: 100%;
     height: 120px;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 90%;    
+}
+.star-pic{
+    background-image: url('star1.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-position: 99% 3%;
+    opacity: 50%;
 }
 .big-box2{
     width: 50%;
@@ -93,36 +122,34 @@
     background-image: url('pic.jpg');
     width: 100%;
     height: 120px;
-    background-size: 150%;
     margin-right: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 .big-pic3{
     background-image: url('pic.jpg');
     width: 100%;
     height: 120px;
-    background-size: 150%;
     margin-left: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 @media(max-width:1200px){
-    .list{
+    .content-box{
         flex-wrap: wrap;
+        width: 1080px;
     }
-    .product{
+    .small-box{
         width: 45%;
+        margin-bottom: 10px;
+    }
+    .small-box1{
+        width: 90%;
+        margin-top: 10px;
     }
 }
-@media(max-width:500px){
-    .headline{
-        font-size: 20px;
-    }
-    .desktop-menu{
-        display: none;
-    }
-    .mobile-menu{
-        display: block;
-    }
-    .product{
-        width: 90%;
-    }
-    
+@media(max-width:600px){
+
 }
