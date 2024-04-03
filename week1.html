@@ -15,12 +15,15 @@
                 <div class="item">Item2</div>
                 <div class="item">Item3</div>
                 <div class="item">Item4</div>
-                <div class="burger" onclick="popup();">
-                    <div id="myDropdown" class="dropdown-content">
+                <div class="burger" id="burgerIcon" onclick="popup();"></div>
+                    <div id="myDropdown" class="dropdown-content" style="display:none">
+                        <div id="itemX" class="dropdown-itemX" onclick="close();">X</div>
                         <div class="dropdown-item">Item1</div>
                         <div class="dropdown-item">Item2</div>
+                        <div class="dropdown-item">Item3</div>
+                        <div class="dropdown-item">Item4</div>
                     </div>
-                </div>
+                
             </div>
         </div>
         <div class="welcome-banner">Welcome to MyHome</div>
@@ -102,9 +105,21 @@
         </div>
         <script>
             function popup(){
-                var x = document.getElementById("myDropdown");
-                if (x.style.display === "none"){
-                    x.style.display = "block";
+                let myDropdown = document.querySelector("#myDropdown");
+                let burgerIcon = document.querySelector("#burgerIcon");
+                console.log(myDropdown);
+                if (myDropdown.style.display === "none"){
+                    myDropdown.style.display = "block";
+                    burgerIcon.style.display = "none";
+                }
+            }
+            function close(){
+                let burgerIcon = document.querySelector("#burgerIcon");
+                let myDropdown = document.querySelector("#myDropdown");
+                console.log(myDropdown);
+                if (myDropdown.style.display === "block"){
+                    myDropdown.style.display = "none";
+                    burgerIcon.style.display = "block";
                 }
             }
         </script>
