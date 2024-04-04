@@ -122,6 +122,19 @@
                     burgerIcon.style.display = "block";
                 }
             }
+            function sizeMonitor(){
+                console.log("視窗大小改變");
+                let burgerIcon = document.querySelector("#burgerIcon");
+                let myDropdown = document.querySelector("#myDropdown");
+                if(window.innerWidth > 600){
+                    myDropdown.style.display = "none";
+                    burgerIcon.style.display = "none";
+                }else{
+                    burgerIcon.style.display = "block";
+                }
+                
+            }
+            window.onresize = sizeMonitor;
         </script>
     </body>
 </html>
