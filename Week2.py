@@ -254,3 +254,52 @@ get_number(1)
 get_number(5)
 get_number(10)
 get_number(30)
+#
+##########
+# Task 5 #
+##########
+#
+# 給定 spaces 為每個車廂有空位的數量
+# 給定 stat 為各車廂是否可以使用
+# 給定 n 為乘客數量
+# 確認是否可以上車，依據車廂空位的數量最少開始乘坐（不分開坐）
+#
+# 將 spaces 與 stat 組合成 dictionary
+# 走訪 dictionary 依據有開放的車廂搜尋最適合之車廂
+# 
+# 偷懶做法 
+#   依據 index 順序將 space 與 stat 相乘再將每個 index 扣掉 n
+#   找出大於等於 0 之 index
+#
+def find(spaces, stat, n):
+    result=[a*b-n for a,b in zip(spaces,stat)]
+    min=[None]
+    for value in result:
+        if(value>=0):
+            if(min[0]==None):
+                min[0]=value
+            elif(value<min[0]):
+                min[0]=value
+    min_index=[]
+    i=0
+    for min_value in result:
+        if(min[0]==min_value):
+            min_index.append(i)
+        i+=1
+    if(min_index==[]):
+        print("-1")
+        return
+    car=[]
+    for car_index in min_index:
+        car.append(car_index)
+    output=""
+    for value in car:
+        if(output==""):
+            output=str(value)
+        else:
+            output=output+", "+str(value)
+    print(output)
+# 測試資料
+find([3, 1, 5, 4, 3, 2], [0, 1, 0, 1, 1, 1], 2) # 5 
+find([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4) # -1 
+find([4, 6, 5, 8], [0, 1, 1, 1], 4) # 2
