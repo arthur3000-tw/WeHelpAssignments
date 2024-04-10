@@ -130,7 +130,7 @@ def book(consultants, hour, duration, criteria):
                 if(consultants[person][hour+time]==1): # 若此時段對應之 value 為 1
                     ocuppied_flag=1 # 記錄時段被佔據
                     break
-            time+=1 # 下一個時段
+            # time+=1 # 下一個時段
         # 若時段被佔據，找下一順位的 consultant
         if(ocuppied_flag==1):
             continue
@@ -141,7 +141,7 @@ def book(consultants, hour, duration, criteria):
                     consultants[person][hour+time]=1 # 將此時段對應之 value 設為 1
             else:
                 consultants[person].setdefault(hour+time,1) # 新增此時段，並將 value 設為 1
-            time+=1 # 下一個時段
+            # time+=1 # 下一個時段
         print(consultants[person]["name"]) # 印出對應之 consultant 的 name
         return
     # 每個 consultant 皆沒有時段
