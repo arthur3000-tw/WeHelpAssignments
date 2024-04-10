@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>Week 2 Task 1</title>
+    </head>
+    <body>
+        <script>
+            //
+            ////////////
+            // Task 1 //
+            ////////////
+            //
+            // 從 messages 中找出大家的位置，依據目前位置輸出距離最近的人
+            // 大家位於台北捷運綠線上，距離遠近定義為相隔車站數量
+            //
+            // 建立台北捷運綠線 dictionary，依序賦予每一站一個值，為了解決小碧潭支線，分為上下行，往新店方向與往松山方向進行賦值
+            // 
+            // 從 message 中提取出名字與站名關係
+            //   走訪每個 message 內容，與車站名稱比對
+            //   輸出人名(key)對車站名稱(value)的 dictionary
+            //
+            // 計算距離關係
+            //   走訪每個人的位置資訊，計算出相對距離
+            //   輸出人名(key)對距離資訊(value)的 dictionary
+            //
+            // 找出最近距離的人
+            //
+            // -------------------------------------------------------------------------------------
+            //
+            // 建立台北捷運綠線資訊與座標
+            taipei_mrt_greenline = {
+                "Songshan":[0,18],
+                "Nanjing Sanmin":[1,17],
+                "Taipei Arena":[2,16],
+                "Nanjing Fuxing":[3,15],
+                "Songjiang Nanjing":[4,14],
+                "Zhongshan":[5,13],
+                "Beimen":[6,12],
+                "Ximen":[7,11],
+                "Xiaonanmen":[8,10],
+                "Chiang Kai-Shek Memorial Hall":[9,9],
+                "Guting":[10,8],
+                "Taipower Building":[11,7],
+                "Gongguan":[12,6],
+                "Wanlong":[13,5],
+                "Jingmei":[14,4],
+                "Dapinglin":[15,3],
+                "Qizhang":[16,2],
+                "Xiaobitan":[17,3],
+                "Xindian City Hall":[17,1],
+                "Xindian":[18,0]
+            }
+            // 由 value 取得 key 的 funciton
+            function getKeyByValue(object, value) {
+                return Object.keys(object).find(key => object[key] === value);
+            }
+            function findAndPrint(messages, currentStation){
+                // 準備人名、訊息及車站資訊
+                message_name=Object.keys(messages) // 取得 message 中的名字(key)，放入 message_name array
+                message_content=Object.values(messages) // 取得 message 中的內容(value)，放入 message_content array
+                station_name=Object.keys(taipei_mrt_greenline) // 取得 taipei_mrt_greenlint 中的站名(key)，放入 station_name array
+                name_position={} // 建立人名(key)對位置(value)的 dictionary
+                // 從 message 中提取出名字與站名關係
+                for(content of message_content){ // 走訪 message_content，content 為 key
+                    for(name of station_name){ // 走訪 station_name
+                        if(content.includes(name)){ // 若 name 在 content 中
+                            name_position[getKeyByValue(messages,content)]=taipei_mrt_greenline[name] // name_position放入人名(key)與車站座標(value)
+                        }
+                    }
+                }
+                // 計算距離關係
+                current_position=taipei_mrt_greenline[currentStation] // 取得目標位置數值
+                relative_position={} // 建立人名(key)相對距離(value) dictionary
+                for(person_index in name_position){ // 走訪每個人的位置資訊
+                    relative=[] // 建立相對距離空 array
+                    for(let i=0;i<name_position[person_index].length;i++){ // 走訪相對位置，並且計算相對位置
+                        if(i==0){ // 當第一個位置資訊時
+                            relative.push(Math.abs(current_position[i]-name_position[person_index][i])) // 計算相對位置（人名所在位置值扣掉目標位置取絕對值），並放入相對距離 array
+                            relative_position[getKeyByValue(name_position,name_position[person_index])]=relative[0] // 放入人名對相對距離 dictionary
+                        }
+                        else{
+                            if(Math.abs(current_position[i]-name_position[person_index][i])>relative[0]){ // 若計算出的相對位置資訊大於第一次計算之值
+                                relative_position[getKeyByValue(name_position,name_position[person_index])]=Math.abs(current_position[i]-name_position[person_index][i]) // 將相對距離值取代
+                            }
+                        }
+                    }
+                }
+                // 找出距離最近的人名
+                min_value=Math.min(...Object.values(relative_position)) // 取出 relative_position 中 value 最小值
+                min_key=[] // 建立最小值 key array，用來記錄最小值所對應之 key
+                for (relative_position_index in relative_position){ // 走訪 relative_position 中的 index，無法用 key，只能用 index
+                    if(relative_position[relative_position_index]==min_value){ // 若 value 為最小值
+                        min_key.push(getKeyByValue(relative_position,min_value)) // 將 key 放入 min_key
+                    }
+                }
+                output="" // 準備空字串
+                for(person of min_key){ // 走訪最小值 key
+                    if(output==""){ // 若字串為空
+                        output=person // 把人名輸入
+                    }
+                    else{ // 若字串不為空
+                        output=output+", "+person // 把 output 後加上 ", " 再加上人名
+                    }
+                }
+                console.log(output)
+            }
+            const messages={
+                "Bob":"I'm at Ximen MRT station.",
+                "Mary":"I have a drink near Jingmei MRT station.", 
+                "Copper":"I just saw a concert at Taipei Arena.", 
+                "Leslie":"I'm at home near Xiaobitan station.", 
+                "Vivian":"I'm at Xindian station waiting for you."
+            };
+            // 測試資料
+            findAndPrint(messages, "Wanlong") // Mary 
+            findAndPrint(messages, "Songshan") // Copper 
+            findAndPrint(messages, "Qizhang") // Leslie 
+            findAndPrint(messages, "Ximen") // Bob 
+            findAndPrint(messages, "Xindian City Hall") // Vivian
+            //
+            ////////////
+            // Task 2 //
+            ////////////
+            //
+            // conslutants 有名稱、評價、價格，從使用者輸入的條件去預定時段
+            // 
+            // 確認條件，依據條件排序 conslutants，再確認 conslutants 時間表，若時間不許可，再找第二順位...，直到沒有符合的 conslutants，印出 no service
+            // 將 consultants 被預定的時段加入該名 consultants 的 dictionary 當中，例如：1:true，代表1點被預約
+            // 
+            // 依照條件找出對應的 consultants，price 由小到大，使用 sorted(range(list_name), key=list_name.__getitem__) 找出由小到大的 index 
+            // rate 由大到小， 使用 sorted(range(list_name), key=list_name.__getitem__, reverse=True) 找出由大到小的 index
+            // 
+            // 確認每位 consultant 是否可以 book 時間
+            //   以 index 走訪已排序的 consultants
+            //       確認 consultants 時間，若有時間重疊，記錄時段被佔用，並且找下一位
+            //   以 index 走訪確認可以佔用時段之 consultant
+            //       寫入 consultant 的 dictionary中，並且印出該名 consultant 的 name    
+            // 每位 cosultant 時段都被佔用，印出 no service
+            //
+            // -------------------------------------------------------------------------------------
+            //
+            // 排序 price 時，會用到的函式（由小到大）
+            function compareByPrice(a,b){
+                return a.price - b.price
+            }
+            // 排序 rate 時，會用到的函式（由大到小）
+            function compareByRate(a,b){
+                return b.rate - a.rate
+            }
+            function book(consultants, hour, duration, criteria){
+                consultants_criteria=[] // 建立 consultants_criteria 的空 list
+                // 依據 criteria 排序 consultants
+                if(criteria=="price"){
+                    consultants.sort(compareByPrice) // 依據 price 排序 consultants
+                }
+                else if(criteria=="rate"){
+                    consultants.sort(compareByRate) // 依據 rate 排序 consultants
+                }
+                // 確認每個 consultants 是否可以 book 時間
+                for(person of consultants){ // 走訪每個 consulatant
+                    ocuppied_flag=0 // 歸零記錄時段被佔據
+                    // 根據 input 時段，確認其 consulatant 時段沒有被佔用
+                    for(let i=0;i<duration;i++){ 
+                        if(hour+i in person){ // 如果此時段 hour+i 有在 person 的 dictionary 中
+                            if(person[hour+i]==true){ // 若此時段對應之 value 為 true
+                                ocuppied_flag=1 // 記錄時段被佔據
+                                break
+                            }
+                        }
+                    }
+                    // 若時段被佔據，找下一順位的 consultant
+                    if(ocuppied_flag==1){
+                        continue
+                    }
+                    // 時段沒有被佔用，將時段寫入 consultant 的 dictionary 中
+                    for(let i=0;i<duration;i++){
+                        person[hour+i]=true // 記錄時段對應之 value 為 true
+                    }
+                    console.log(person["name"]) // 印出對應之 consultant 的 name
+                    return
+                }
+                // 每個 consultant 皆沒有時段
+                console.log("No Service")
+            }            
+            
+            const consultants=[
+                {"name":"John", "rate":4.5, "price":1000}, 
+                {"name":"Bob", "rate":3, "price":1200}, 
+                {"name":"Jenny", "rate":3.8, "price":800}
+            ];
+
+            // 測試資料
+            book(consultants, 15, 1, "price") // Jenny 
+            book(consultants, 11, 2, "price") // Jenny 
+            book(consultants, 10, 2, "price") // John 
+            book(consultants, 20, 2, "rate") // John 
+            book(consultants, 11, 1, "rate") // Bob 
+            book(consultants, 11, 2, "rate") // No Service 
+            book(consultants, 14, 3, "price") // John
+            
+            // 有趣的狀況，consultants 會 update
+            // console.log(consultants) // 會印出 sort 後的狀況
+            // consultants.sort(compareByPrice)
+            // console.log(consultants)
+            //
+            ////////////
+            // Task 3 //
+            ////////////
+            //
+            // 找出最特別中間名字（姓名為兩個字取第二個字，姓名為四個字取第三個字）
+            //
+            // 取出中間名
+            //   使用 for 迴圈，把名字抓出來，再判斷名字長度，根據名字長度取出中間名
+            //
+            // 統計中間名  
+            //   準備一個 dictionary ，擺放取出的中間名，判斷中間名是否有出現過
+            //       沒有出現過就在 dictionary 中新增 key-value pair，並且set value = 1
+            //       有出現在 dictionary 中，將 key 所對應的 value +1
+            // 
+            // 找出最少的名
+            //   Math.min(...Object.values(obj)) <-- 可以找出 value 最小的 key，若是有多個最小 value 的 key，僅回傳一個 key
+            //   min_value=Math.min(...Object.values(obj))
+            //   走訪 midde_name_dict 找出 value==min_value 的 key，放入 min_key
+            //
+            // 輸出
+            //   若是 min_key.length==1，表示有最少的名； min_key.length!=1，表示沒有最少的名， 輸出『沒有』
+            //   有最少的名，走訪 data 中所有的 name，有在 name 中則印出此 name <== 是否可以不用走訪的方式，在前面篩選的時候就可以記錄並直接印出
+            //
+            // 特殊狀況處理
+            //   data為空時，印出『沒資料』
+            //
+            // -------------------------------------------------------------------------------------
+            //
+            // 由 value 取得 key 的 funciton
+            function getKeyByValue(object, value) {
+                return Object.keys(object).find(key => object[key] === value);
+            }
+            function func(...data){
+                // data 為 array
+                // 特殊狀況處理
+                if(data.length==0){
+                    console.log("沒資料")
+                    return
+                }
+                middle_name_dict={} // 建立中間名字典
+                midname="" // 中間名參數
+                // 取出以及統計中間名
+                for(name of data){ // 走訪 data 中的 name，data 為 array 用 for...of...，name 為 value
+                    if(name.length==2 || name.length==3){ // name 長度為 2 及 3 時
+                        midname=name[1] // 取第二個字為中間名
+                        if(midname in middle_name_dict){ // 若中間名在中間名字典中
+                            middle_name_dict[midname] += 1 // 對應次數(value) +1
+                        }
+                        else{ // 若中間名沒有在字典中
+                            middle_name_dict[midname] = 1 // 建立新的中間名(key)及次數(value)為 1
+                        }
+                    }
+                    else if(name.length==4 || name.length==5){
+                        midname=name[2]
+                        if(midname in middle_name_dict){
+                            middle_name_dict[midname] += 1
+                        }
+                        else{
+                            middle_name_dict[midname] = 1
+                        }
+                    }
+                }
+                // 找出最少的名
+                min_value=Math.min(...Object.values(middle_name_dict)) // 取出 middle_name_dict 中 value 最小值
+                min_key=[] // 建立最小值 key array，用來記錄最小值所對應之 key
+                for (middle_name_index in middle_name_dict){ // 走訪 midde_name_dict 中的 index，無法用 key，只能用 index
+                    if(middle_name_dict[middle_name_index]==min_value){ // 若 value 為最小值
+                        min_key.push(getKeyByValue(middle_name_dict,min_value)) // 將 key 放入 min_key
+                    }
+                }
+                // 確認是否有最少的名，並且印出對應結果
+                if(min_key.length==1){ // 若 min_key 中長度只有 1 表示有最特殊名
+                    for(name of data){ // 走訪 data，搜尋完整名字
+                        if(name.includes(min_key[0])){ // 若特殊名在完整名中
+                            console.log(name)
+                        }
+                    }
+                }
+                else{ // min_key 中長度沒有最特殊名
+                    console.log("沒有")
+                }
+            }            
+            // 測試資料
+            func("彭大牆", "陳王明雅", "吳明") // 彭大牆
+            func("郭靜雅", "王立強", "郭林靜宜", "郭立恆", "林花花") // 林花花
+            func("郭宣雅", "林靜宜", "郭宣恆", "林靜花") // 沒有
+            func("郭宣雅", "夏曼藍波安", "郭宣恆") // 夏曼藍波安
+            //
+            ////////////
+            // Task 4 //
+            ////////////
+            //
+            // Number sequence: 0, 4, 8, 7, 15, 14, 18, 22, 21, 25, ...
+            // 發現為 4 * index再扣除 （index / 3 的商數）* 5
+            // 查詢 JavaScript 如何取商數，用除完的數字再取整數部分，使用 parseInt 函式取得整數部分
+            //
+            function getNumber(index){
+                q = parseInt(index/3)
+                console.log(index*4-q*5)
+            }
+            getNumber(1);
+            getNumber(5);
+            getNumber(10);
+            getNumber(30);
+        </script>
+    </body>
+</html>
