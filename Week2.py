@@ -272,7 +272,9 @@ get_number(30)
 #   找出大於等於 0 之 index
 #
 def find(spaces, stat, n):
+    # 使用 spaces、stat 及 n 計算結果
     result=[a*b-n for a,b in zip(spaces,stat)]
+    # 取出大於等於 0 之最小值
     min=[None]
     for value in result:
         if(value>=0):
@@ -280,20 +282,20 @@ def find(spaces, stat, n):
                 min[0]=value
             elif(value<min[0]):
                 min[0]=value
+    # 若 min[0] 為 None，表示找不到符合車廂
+    if(min[0]==None):
+        print(-1)
+        return
+    # 找出最小值的 index
     min_index=[]
     i=0
     for min_value in result:
         if(min[0]==min_value):
             min_index.append(i)
         i+=1
-    if(min_index==[]):
-        print("-1")
-        return
-    car=[]
-    for car_index in min_index:
-        car.append(car_index)
+    # 印出車廂 index
     output=""
-    for value in car:
+    for value in min_index:
         if(output==""):
             output=str(value)
         else:
