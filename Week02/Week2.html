@@ -129,8 +129,8 @@
             // 確認條件，依據條件排序 conslutants，再確認 conslutants 時間表，若時間不許可，再找第二順位...，直到沒有符合的 conslutants，印出 no service
             // 將 consultants 被預定的時段加入該名 consultants 的 dictionary 當中，例如：1:true，代表1點被預約
             // 
-            // 依照條件找出對應的 consultants，price 由小到大，使用 sorted(range(list_name), key=list_name.__getitem__) 找出由小到大的 index 
-            // rate 由大到小， 使用 sorted(range(list_name), key=list_name.__getitem__, reverse=True) 找出由大到小的 index
+            // 依照條件找出對應的 consultants，price 由小到大，使用 .sort(compareByPrice)，將 consultants 中的字典由小到大排序 
+            // rate 由大到小， 使用 .sort(compareByRate)，將 consultants 中的字典由大到小排序 
             // 
             // 確認每位 consultant 是否可以 book 時間
             //   以 index 走訪已排序的 consultants
@@ -294,8 +294,8 @@
             // Task 4 //
             ////////////
             //
-            // Number sequence: 0, 4, 8, 7, 15, 14, 18, 22, 21, 25, ...
-            // 發現為 4 * index再扣除 （index / 3 的商數）* 5
+            // Number sequence: 0, 4, 8, 7, 11, 15, 14, 18, 22, 21, 25, ...
+            // 發現為 4 * index再扣 （index / 3 的商數）* 5
             // 查詢 JavaScript 如何取商數，用除完的數字再取整數部分，使用 parseInt 函式取得整數部分
             //
             function getNumber(index){
