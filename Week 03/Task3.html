@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <title>Week 3 Tesk 3</title>
+        <link rel="stylesheet" type="text/css" href="task3.css" />
+    </head>
+    <body>
+        <div class="top">
+            <div class="website-title">My Website</div>
+            <div class="top-item">
+                <div class="item">Item1</div>
+                <div class="item">Item2</div>
+                <div class="item">Item3</div>
+                <div class="item">Item4</div>
+                <div class="burger" id="burgerIcon" onclick="popupMenu();"></div>
+                    <div id="myDropdown" class="dropdown-content" style="display:none">
+                        <div id="itemX" class="dropdown-itemX" onclick="closeMenu();">X</div>
+                        <div class="dropdown-item">Item1</div>
+                        <div class="dropdown-item">Item2</div>
+                        <div class="dropdown-item">Item3</div>
+                        <div class="dropdown-item">Item4</div>
+                    </div>
+                
+            </div>
+        </div>
+        <div class="welcome-banner">Welcome to MyHome</div>
+        <div class="content">
+            <div class="grid-container">
+                <div class="grid-item1">
+                    <div class="small-pic"></div>
+                    <div class="small-text" id="text">Promotion 1</div>
+                </div>
+                <div class="grid-item2">
+                    <div class="small-pic"></div>
+                    <div class="small-text" id="text">Promotion 2</div>
+                </div>
+                <div class="grid-item3">
+                    <div class="small-pic"></div>
+                    <div class="small-text" id="text">Promotion 3</div>
+                </div>
+                <div class="grid-item4">
+                    <div class="big-pic">
+                        <div class="star-pic" ></div>
+                        <div class="text-pic" id="text">Title 1</div>
+                    </div>
+                </div>
+                <div class="grid-item5">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 2</div>
+                    </div>
+                </div>
+                <div class="grid-item6">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 3</div>
+                    </div>
+                </div>
+                <div class="grid-item7">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 4</div>
+                    </div>
+                </div>
+                <div class="grid-item8">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 5</div>
+                    </div>
+                </div>
+                <div class="grid-item9">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 6</div>
+                    </div>
+                </div>
+                <div class="grid-item10">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 7</div>
+                    </div>
+                </div>
+                <div class="grid-item11">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 8</div>
+                    </div>
+                </div>
+                <div class="grid-item12">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 9</div>
+                    </div>
+                </div>
+                <div class="grid-item13">
+                    <div class="big-pic">
+                        <div class="star-pic"></div>
+                        <div class="text-pic" id="text">Title 10</div>
+                    </div>
+                </div>
+                <div class="grid-item-button">
+                    <button class="button" onclick="veiwMore(this);">Load More...</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var lastItem = 13
+        var lastBigPicItem = 10
+        var addItems=10
+        const addSetItems=10
+        fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(function(response){
+            return response.json();
+        }).then(function(data){
+            dataNumbers = data["data"]["results"].length
+            var el=document.querySelectorAll("#text")
+            for(let i=0;i<lastItem;i++){
+                el[i].textContent=data["data"]["results"][i]["stitle"]
+                el[i].style.textOverflow="ellipsis"
+                el[i].style.overflow="hidden"
+                el[i].style.whiteSpace="nowrap"
+            }
+            var el=document.querySelectorAll(".small-pic")
+            for(let i=0;i<3;i++){
+                links = data["data"]["results"][i]["filelist"]
+                link = links.split("https://")
+                img_url = "https://"+link[1]
+                el[i].style.backgroundImage="url("+img_url+")"
+            }
+            var el=document.querySelectorAll(".big-pic")
+            for(let i=0;i<lastBigPicItem;i++){
+                links = data["data"]["results"][i+3]["filelist"]
+                link = links.split("https://")
+                img_url = "https://"+link[1]
+                el[i].style.backgroundImage="url("+img_url+")"
+            }
+        })
+        function popupMenu(){
+                let myDropdown = document.querySelector("#myDropdown");
+                let burgerIcon = document.querySelector("#burgerIcon");
+                if (myDropdown.style.display === "none"){
+                    myDropdown.style.display = "block";
+                    burgerIcon.style.display = "none";
+                }
+            }
+            function closeMenu(){
+                let burgerIcon = document.querySelector("#burgerIcon");
+                let myDropdown = document.querySelector("#myDropdown");
+                if (myDropdown.style.display === "block"){
+                    myDropdown.style.display = "none";
+                    burgerIcon.style.display = "block";
+                }
+            }
+            function sizeMonitor(){
+                // console.log("視窗大小改變");
+                let burgerIcon = document.querySelector("#burgerIcon");
+                let myDropdown = document.querySelector("#myDropdown");
+                if(window.innerWidth > 1200){
+                    myDropdown.style.display = "none";
+                    burgerIcon.style.display = "none";
+                    gridItems=document.querySelectorAll(".grid-items")
+                    for(let i=0;i<gridItems.length;i++){
+                        gridItems[i].style.gridColumnStart=1+(i%5)
+                        gridItems[i].style.gridColumnEnd=2+(i%5)
+                        gridItems[i].style.gridRowStart=4+Math.floor(i/5)
+                        gridItems[i].style.gridRowEnd=5+Math.floor(i/5)
+                    }
+                    buttonItem=document.querySelector(".grid-item-button")
+                    buttonItem.style.gridRowStart=4+Math.floor(gridItems.length/5)
+                    buttonItem.style.gridRowEnd=5+Math.floor(gridItems.length/5)
+                }
+                if(window.innerWidth > 601 && window.innerWidth <= 1200){
+                    myDropdown.style.display = "none";
+                    burgerIcon.style.display = "none";
+                    gridItems=document.querySelectorAll(".grid-items")
+                    for(let i=0;i<gridItems.length;i++){
+                        if(i%addSetItems<8){
+                            gridItems[i].style.gridColumnStart=1+(i%addSetItems%4)
+                            gridItems[i].style.gridColumnEnd=2+(i%addSetItems%4)
+                            gridItems[i].style.gridRowStart=6+Math.floor(i%addSetItems/4)+Math.floor(i/addSetItems)*3
+                            gridItems[i].style.gridRowEnd=7+Math.floor(i%addSetItems/4)+Math.floor(i/addSetItems)*3
+                        }
+                        else{
+                            gridItems[i].style.gridColumnStart=1+(i%addSetItems%8)*2
+                            gridItems[i].style.gridColumnEnd=3+(i%addSetItems%8)*2
+                            gridItems[i].style.gridRowStart=7+Math.floor(i%addSetItems/8)+Math.floor(i/addSetItems)*3
+                            gridItems[i].style.gridRowEnd=8+Math.floor(i%addSetItems/8)+Math.floor(i/addSetItems)*3
+                        }
+                    }
+                    buttonItem=document.querySelector(".grid-item-button")
+                    buttonItem.style.gridRowStart=6+Math.floor(gridItems.length/addSetItems)*3
+                    buttonItem.style.gridRowEnd=7+Math.floor(gridItems.length/addSetItems)*3
+                }
+                if(window.innerWidth <= 600){
+                    burgerIcon.style.display = "block";
+                    gridItems=document.querySelectorAll(".grid-items")
+                    for(let i=0;i<gridItems.length;i++){
+                        gridItems[i].style.gridColumnStart=1
+                        gridItems[i].style.gridColumnEnd=2
+                        gridItems[i].style.gridRowStart=4+i
+                        gridItems[i].style.gridRowEnd=5+i
+                    }
+                    buttonItem=document.querySelector(".grid-item-button")
+                    buttonItem.style.gridRowStart=4+gridItems.length
+                    buttonItem.style.gridRowEnd=5+gridItems.length
+                }
+            }
+            function veiwMore(thisElement){
+                const buttonRowStart=parseInt(window.getComputedStyle(thisElement.parentElement).gridRowStart)
+                // 建立物件
+                if(window.innerWidth > 1200){
+                    if(lastItem+addSetItems>dataNumbers){
+                        addItems=dataNumbers-lastItem
+                    }
+                    for(let i=0;i<addItems;i++){
+                        // 建立要增加的標籤並儲存於變數中
+                        const gridContainer = document.querySelector(".grid-container")
+                        const gridItem = document.createElement("div")
+                        const bigPic = document.createElement("div")
+                        const starPic = document.createElement("div")
+                        const textPic = document.createElement("div")
+                        gridContainer.appendChild(gridItem)
+                        gridItem.className="grid-items"
+                        gridItem.appendChild(bigPic)
+                        gridItem.style.gridColumnStart=1+(i%5)
+                        gridItem.style.gridColumnEnd=2+(i%5)
+                        gridItem.style.gridRowStart=buttonRowStart+Math.floor(i/5)
+                        gridItem.style.gridRowEnd=buttonRowStart+Math.floor(i/5)+1
+                        bigPic.className="big-pic"
+                        bigPic.style.backgroundImage="url()"
+                        bigPic.appendChild(starPic)
+                        starPic.className="star-pic"
+                        bigPic.appendChild(textPic)
+                        textPic.className="text-pic"
+                        textPic.id = "text"
+                    }               
+                    fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(function(response){
+                        return response.json();
+                    }).then(function(data){
+                        var el=document.querySelectorAll("#text")
+                        for(let i=lastItem;i<lastItem+addItems;i++){
+                            el[i].textContent=data["data"]["results"][i]["stitle"]
+                            el[i].style.textOverflow="ellipsis"
+                            el[i].style.overflow="hidden"
+                            el[i].style.whiteSpace="nowrap"
+                        }
+                        var el=document.querySelectorAll(".big-pic")
+                        for(let i=lastBigPicItem;i<lastBigPicItem+addItems;i++){
+                            links = data["data"]["results"][i+3]["filelist"]
+                            link = links.split("https://")
+                            img_url = "https://"+link[1]
+                            el[i].style.backgroundImage="url("+img_url+")"
+                        }
+                        lastItem += 10
+                        lastBigPicItem += 10
+                    })
+                    if(lastItem+addItems==dataNumbers){
+                        thisElement.style.display = "none"
+                        return
+                    }
+                    thisElement.parentElement.style.gridRowStart = buttonRowStart+2
+                    thisElement.parentElement.style.gridRowEnd = buttonRowStart+3
+                }
+                if(window.innerWidth > 601 && window.innerWidth <= 1200){
+                    if(lastItem+addSetItems>dataNumbers){
+                        addItems=dataNumbers-lastItem
+                    }
+                    for(let i=0;i<addItems;i++){
+                        // 建立要增加的標籤並儲存於變數中
+                        const gridContainer = document.querySelector(".grid-container")
+                        const gridItem = document.createElement("div")
+                        const bigPic = document.createElement("div")
+                        const starPic = document.createElement("div")
+                        const textPic = document.createElement("div")
+                        gridContainer.appendChild(gridItem)
+                        gridItem.className="grid-items"
+                        gridItem.appendChild(bigPic)
+                        if(i<8){
+                            gridItem.style.gridColumnStart=1+(i%4)
+                            gridItem.style.gridColumnEnd=2+(i%4)
+                            gridItem.style.gridRowStart=buttonRowStart+Math.floor(i/4)
+                            gridItem.style.gridRowEnd=buttonRowStart+Math.floor(i/4)+1
+                        }else{
+                            gridItem.style.gridColumnStart=1+(i%8)*2
+                            gridItem.style.gridColumnEnd=3+(i%8)*2
+                            gridItem.style.gridRowStart=buttonRowStart+Math.floor(i/8)+1
+                            gridItem.style.gridRowEnd=buttonRowStart+Math.floor(i/8)+2
+                        }
+                        bigPic.className="big-pic"
+                        bigPic.style.backgroundImage="url()"
+                        bigPic.appendChild(starPic)
+                        starPic.className="star-pic"
+                        bigPic.appendChild(textPic)
+                        textPic.className="text-pic"
+                        textPic.id = "text"
+                    }
+                    fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(function(response){
+                        return response.json();
+                    }).then(function(data){
+                        var el=document.querySelectorAll("#text")
+                        for(let i=lastItem;i<lastItem+addItems;i++){
+                            el[i].textContent=data["data"]["results"][i]["stitle"]
+                            el[i].style.textOverflow="ellipsis"
+                            el[i].style.overflow="hidden"
+                            el[i].style.whiteSpace="nowrap"
+                        }
+                        var el=document.querySelectorAll(".big-pic")
+                        for(let i=lastBigPicItem;i<lastBigPicItem+addItems;i++){
+                            links = data["data"]["results"][i+3]["filelist"]
+                            link = links.split("https://")
+                            img_url = "https://"+link[1]
+                            el[i].style.backgroundImage="url("+img_url+")"
+                        }
+                        lastItem += 10
+                        lastBigPicItem += 10
+                    })
+                    if(lastItem+addItems==dataNumbers){
+                        thisElement.style.display = "none"
+                        return
+                    }
+                    thisElement.parentElement.style.gridRowStart = buttonRowStart+3
+                    thisElement.parentElement.style.gridRowEnd = buttonRowStart+4
+                }
+                if(window.innerWidth <= 600){
+                    if(lastItem+addSetItems>dataNumbers){
+                        addItems=dataNumbers-lastItem
+                    }
+                    for(let i=0;i<addItems;i++){
+                        // 建立要增加的標籤並儲存於變數中
+                        const gridContainer = document.querySelector(".grid-container")
+                        const gridItem = document.createElement("div")
+                        const bigPic = document.createElement("div")
+                        const starPic = document.createElement("div")
+                        const textPic = document.createElement("div")
+                        gridContainer.appendChild(gridItem)
+                        gridItem.className="grid-items"
+                        gridItem.appendChild(bigPic)
+                        gridItem.style.gridColumnStart=1
+                        gridItem.style.gridColumnEnd=2
+                        gridItem.style.gridRowStart=buttonRowStart+i
+                        gridItem.style.gridRowEnd=buttonRowStart+i+1
+                        bigPic.className="big-pic"
+                        bigPic.style.backgroundImage="url()"
+                        bigPic.appendChild(starPic)
+                        starPic.className="star-pic"
+                        bigPic.appendChild(textPic)
+                        textPic.className="text-pic"
+                        textPic.id = "text"
+                    }
+                    fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(function(response){
+                        return response.json();
+                    }).then(function(data){
+                        var el=document.querySelectorAll("#text")
+                        for(let i=lastItem;i<lastItem+addItems;i++){
+                            el[i].textContent=data["data"]["results"][i]["stitle"]
+                            el[i].style.textOverflow="ellipsis"
+                            el[i].style.overflow="hidden"
+                            el[i].style.whiteSpace="nowrap"
+                        }
+                        var el=document.querySelectorAll(".big-pic")
+                        for(let i=lastBigPicItem;i<lastBigPicItem+addItems;i++){
+                            links = data["data"]["results"][i+3]["filelist"]
+                            link = links.split("https://")
+                            img_url = "https://"+link[1]
+                            el[i].style.backgroundImage="url("+img_url+")"
+                        }
+                        lastItem += 10
+                        lastBigPicItem += 10
+                    })
+                    if(lastItem+addItems==dataNumbers){
+                        thisElement.style.display = "none"
+                        return
+                    }
+                    thisElement.parentElement.style.gridRowStart = buttonRowStart+10
+                    thisElement.parentElement.style.gridRowEnd = buttonRowStart+11
+                }          
+            }
+            window.onresize = sizeMonitor;
+    </script>
+</html>
