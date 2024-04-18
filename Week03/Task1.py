@@ -1,8 +1,8 @@
 # 有兩筆數據在連結網址中
 # 取得兩筆資料數據，進行整理，輸出兩個 csv 檔案
 # 處理兩筆資料，得到適當的 csv 檔案格式
-# 
 
+# import 資料庫
 import urllib.request as req
 import ssl
 import json
@@ -44,9 +44,6 @@ for index in result["data"]["results"]: # 從資料中取得數據，資料位�
     # 放入 spot_info 中，使用聯集將兩個字典融合
     spot_info.append({"SpotTitle":index["stitle"],"Longitude":index["longitude"],"Latitude":index["latitude"], "ImageURL":url_link_first, "Serial_No":index["SERIAL_NO"]} | add_dict)
     
-
-
-
 # 準備 mrt.csv 內容
 
 # 取出捷運站資訊
@@ -54,6 +51,7 @@ mrt_stations=[]
 for index in spot_info:
     if(index["MRT"]) not in mrt_stations:
         mrt_stations.append(index["MRT"])
+
 mrt_info=[]
 # 依據每個捷運站走訪每個資料
 i=0
@@ -72,12 +70,7 @@ with open("mrt.csv", mode="w", newline="") as file:
         write_list.append(info["MRT"]) # 將訊息寫進 list
         writer.writerow(write_list+list(info["SpotTitle"]))
 
-
 # 準備 spot.csv 內容
-
-
-
-
 
 # 寫入檔案
 with open("spot.csv", mode="w", newline="") as file: # 建立 spot.csv 檔案
@@ -86,21 +79,3 @@ with open("spot.csv", mode="w", newline="") as file: # 建立 spot.csv 檔案
     for info in spot_info: # 將每個字典中的 value 寫入
         writer.writerow(list(spot_info[index].values())[0:1]+list(spot_info[index].values())[6:7]+list(spot_info[index].values())[1:4])
         index+=1
-
-
-
-
-
-
-# print(spot_info)
-
-# print(result["data"]["results"][0]["info"])
-
-# i=0
-# for index in result["data"]["results"]:
-#     print(i,index["info"])
-#     i+=1
-
-# print(result["data"]["results"][46])
-
-# print(result["data"]["results"][0])
