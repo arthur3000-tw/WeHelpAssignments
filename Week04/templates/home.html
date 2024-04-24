@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href = "{{ url_for('static', path='/home.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">歡迎光臨，請輸入帳號密碼</div>
+    <div class="login-panel">
+        <form action="/signin" method="post" onsubmit="return checkBox();">
+            <div class="title">登入系統</div>
+            <div class="text">帳號 &nbsp<input type="text" name="username" placeholder="ID" size="30" class="input-box-text" /></div>
+            <div class="text">密碼 &nbsp<input type="password" name="password" placeholder="Password" size="30" class="input-box-text" /></div>
+            <div class="text">同意條款 &nbsp<input type="checkbox" id="agreement-check" class="input-box-check" /></div>
+            <div class="text"><button type="submit" class="input-box-button">登入</button></div>
+        </form>
+    </div>
+    <div>&nbsp</div>
+    <hr></hr>
+    <div>&nbsp</div>
+    <div>
+        <form action="/square" method="post" onsubmit="return checkValue();">
+            <div class="title">計算正整數的平方</div>
+            <div class="text">正整數 &nbsp<input type="text" name="number" size="30" class="input-box-text" id="number"/></div>
+            <div class="text"><button type="submit" class="input-box-button">計算</button></div>
+        </form>
+    </div>
+</body>
+<script>
+    // 確認是否勾選同意條款
+    function checkBox(){
+        let checkBoxStatus = document.querySelector("#agreement-check")
+        if(checkBoxStatus.checked == false){
+            window.alert("請勾選同意條款！")
+            return false
+        }
+    }
+    // 確認輸入是否為正整數
+    function checkValue(){
+        let checkValue = document.querySelector("#number").value
+        // 確認是否為數字
+        if (isNaN(checkValue) == true){
+            window.alert("不是一個數字！")
+            return false
+        }
+        // 確認是否為整數
+        else if (Number.isInteger(parseFloat(checkValue)) == false){
+            window.alert("不是整數！")
+            return false
+        }
+        // 確認是否為正整數
+        else if (parseInt(checkValue) <= 0){
+            window.alert("不是正整數！")
+            return false
+        }
+    }
+</script>
+</html>

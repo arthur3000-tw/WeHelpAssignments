@@ -1,0 +1,41 @@
+*, html{
+    margin: 0;
+    padding: 0;
+}
+.banner{
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+    font-size: 32pt;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.login-panel{
+    display: wrap;
+}
+.title{
+    font-size: 24pt;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.text{
+    font-size: 20pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.input-box-text{
+    font-size: 15pt;
+    padding: 5pt;
+}
+.input-box-check{
+    width: 20px;
+    height: 20px;
+}
+.input-box-button{
+    width: 100px;
+    height: 50px;
+    font-size: 14pt;
+}

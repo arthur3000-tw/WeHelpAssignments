@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square</title>
+    <link href = "{{ url_for('static', path='/home.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">正整數平方計算結果</div>
+    <div class="title">{{ number * number }}</div> <!-- 輸入外部 number，計算平方並顯示結果 -->
+</body>
+</html>
