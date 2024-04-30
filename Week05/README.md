@@ -84,3 +84,22 @@ WHERE name LIKE "%es%";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/ee688c3a-e878-4391-be6e-6f95f572902b)
+## SELECT rows where both username and password equal to test
+### SQL statements:
+```mysql
+SELECT * FROM member
+WHERE username = "test" AND password = "test";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7a619586-076e-472f-ac38-4bbc465d5db6)
+## UPDATE data in name column to test2 where username equals to test
+### SQL statements:
+```mysql
+UPDATE member
+SET name = "test2"
+WHERE username = "test";
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/070b9c47-262e-4e0e-bd9e-b73379f96b2c)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/63f8922b-b378-4f2f-99be-c6ee5d03cb32)
+
