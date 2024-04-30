@@ -102,4 +102,10 @@ WHERE username = "test";
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/070b9c47-262e-4e0e-bd9e-b73379f96b2c)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/63f8922b-b378-4f2f-99be-c6ee5d03cb32)
-
+## SELECT how many rows from the member table
+```mysql
+SELECT COUNT(*)
+FROM member;
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2a5505df-92fe-436d-8f66-1eafbe4bf40b)
