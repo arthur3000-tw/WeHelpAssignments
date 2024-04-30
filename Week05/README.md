@@ -1,11 +1,12 @@
-## Create a new database named website
+# Task 2: Create database and table in your MySQL server
+## 1. Create a new database named website
 ### SQL statements:
 ```mysql
 CREATE DATABASE website;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/16833a7a-65af-4671-b445-7461dc449b17)
-## Create a new table named member, in the website database, designed as below
+## 2. Create a new table named member, in the website database, designed as below
 | Colunm Name | Data Type | Additional Settings | Description |
 | ----------- | --------- | ------------------- | ----------- |
 | id | bigint | primary key, auto increment | Unique ID |
@@ -24,7 +25,8 @@ time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/d7298a4f-cc07-4074-a24c-30c196f06fae)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/afafd357-55e6-4e64-83cf-b35934d56870)
-## INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data
+# Task 3: SQL CRUD
+## 1. INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data
 ### SQL statements:
 ```mysql
 INSERT INTO member (id, name, username, password)
@@ -44,14 +46,14 @@ VALUES (101, "best","best","best"),
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/b5d75ebe-82a9-4d7c-8da1-baa25ed47c38)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e9501073-e5dc-40e8-b078-32c459b6cf21)
-## SELECT all rows from the member table
+## 2. SELECT all rows from the member table
 ### SQL statements:
 ```mysql
 SELECT * FROM member;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e9501073-e5dc-40e8-b078-32c459b6cf21)
-## SELECT all rows from the member table, in descending order of time
+## 3. SELECT all rows from the member table, in descending order of time
 ### SQL statements:
 ```mysql
 SELECT * FROM member
@@ -59,7 +61,7 @@ ORDER BY time DESC;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/f2c9d8f6-866f-42ef-bf14-359210288c06)
-## SELECT total 3 rows, second to fourth, from the member table, in descending order of time. Note: it does not mean SELECT rows where id are 2, 3, or 4
+## 4. SELECT total 3 rows, second to fourth, from the member table, in descending order of time. Note: it does not mean SELECT rows where id are 2, 3, or 4
 ### SQL statements:
 ```mysql
 SELECT * FROM member
@@ -68,7 +70,7 @@ LIMIT 1, 3;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/0a6e18c1-6a7f-4704-a7ba-c56c450d748e)
-## SELECT rows where username equals to test
+## 5. SELECT rows where username equals to test
 ### SQL statements:
 ```mysql
 SELECT * FROM member
@@ -76,7 +78,7 @@ WHERE username = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3d613f3c-2730-4914-8ce9-1e6b04531ab6)
-## SELECT rows where name includes the es keyword
+## 6. SELECT rows where name includes the es keyword
 ### SQL statements:
 ```mysql
 SELECT * FROM member
@@ -84,7 +86,7 @@ WHERE name LIKE "%es%";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/ee688c3a-e878-4391-be6e-6f95f572902b)
-## SELECT rows where both username and password equal to test
+## 7. SELECT rows where both username and password equal to test
 ### SQL statements:
 ```mysql
 SELECT * FROM member
@@ -92,7 +94,7 @@ WHERE username = "test" AND password = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7a619586-076e-472f-ac38-4bbc465d5db6)
-## UPDATE data in name column to test2 where username equals to test
+## 8. UPDATE data in name column to test2 where username equals to test
 ### SQL statements:
 ```mysql
 UPDATE member
@@ -102,7 +104,8 @@ WHERE username = "test";
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/070b9c47-262e-4e0e-bd9e-b73379f96b2c)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/63f8922b-b378-4f2f-99be-c6ee5d03cb32)
-## SELECT how many rows from the member table
+# Task 4: SQL Aggregation Functions
+## 1. SELECT how many rows from the member table
 ### SQL statements:
 ```mysql
 SELECT COUNT(*)
@@ -120,7 +123,7 @@ UPDATE member SET follower = 50 WHERE id = 104;
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2f735a5e-560f-4cf5-be64-ec45cc578b71)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/203d5439-7551-470e-b329-848e1f1d28ec)
-## SELECT the sum of follower_count of all the rows from the member table
+## 2. SELECT the sum of follower_count of all the rows from the member table
 ### SQL statements:
 ```mysql
 SELECT SUM(follower) AS follower_count
@@ -128,7 +131,7 @@ FROM member;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/414ed144-f4b6-4666-a22b-24342cef99c4)
-## SELECT the average of follower_count of all the rows from the member table
+## 3. SELECT the average of follower_count of all the rows from the member table
 ### SQL statements:
 ```mysql
 SELECT AVG(follower) AS follower_average
@@ -136,7 +139,7 @@ FROM member;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/31d2d413-4010-40f1-83c3-b688e7dc540f)
-## SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table
+## 4. SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table
 ### SQL statements:
 ```mysql
 SELECT AVG(follower)
@@ -147,7 +150,8 @@ LIMIT 0, 2) AS follower_average;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e51226f2-3bbf-4d00-8fc0-503a23a49950)
-## Create a new table named message, in the website database. designed as below
+# Task 5: SQL JOIN
+## 1. Create a new table named message, in the website database. designed as below
 | Column Name | Data Type | Additional Settings | Description |
 | ----------- | --------- | ------------------- | ----------- |
 | id | bigint | primary key, auto increment | Unique ID |
@@ -178,7 +182,7 @@ VALUES (10000, 100, "test test", 1),
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/dbf5a2ce-f234-4294-a051-301e85eb422d)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3044963c-6441-4ffd-bc46-e0c2d67d2960)
-## SELECT all messages, including sender names. We have to JOIN the member table to get that
+## 2. SELECT all messages, including sender names. We have to JOIN the member table to get that
 ### SQL statements:
 ```mysql
 SELECT member.name, message.*
@@ -187,7 +191,7 @@ JOIN member ON message.member_id = member.id;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/ef35e380-dd28-4070-bdeb-49ab53c07716)
-## SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that
+## 3. SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that
 ### SQL statements:
 ```mysql
 SELECT member.name, message.* 
@@ -197,7 +201,7 @@ WHERE member.username = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/07062ea6-9357-41f4-8d90-0b078677f220)
-## Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test
+## 4. Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test
 ### SQL statements:
 ```mysql
 SELECT member.username, AVG(message.like_count)
@@ -207,7 +211,7 @@ WHERE member.username = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/fa5ee74b-7d48-44e0-8f8f-43c531a459e5)
-## Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username
+## 5. Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username
 ### SQL statements:
 ```mysql
 SELECT member.username, AVG(message.like_count)
