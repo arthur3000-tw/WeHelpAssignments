@@ -160,3 +160,20 @@ FOREIGN KEY(member_id) REFERENCES member(id));
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7b71fe83-44b2-480f-b206-500411335b12)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1553400f-43ec-4229-a999-1189c7f22687)
+## INSERT new data to message
+```mysql
+INSERT INTO message (id, member_id, content, like_count)
+VALUES (10000, 100, "test test", 1),
+       (10001, 103, "I am Tom", 18),
+       (10002, 104, "King James!", 103),
+       (10003, 102, "Little John", 7),
+       (10004, 100, "test again", 3);
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/dbf5a2ce-f234-4294-a051-301e85eb422d)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3044963c-6441-4ffd-bc46-e0c2d67d2960)
+## SELECT all messages, including sender names. We have to JOIN the member table to get that
+```mysql
+
+```
+### Screenshots:
