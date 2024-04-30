@@ -103,6 +103,7 @@ WHERE username = "test";
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/070b9c47-262e-4e0e-bd9e-b73379f96b2c)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/63f8922b-b378-4f2f-99be-c6ee5d03cb32)
 ## SELECT how many rows from the member table
+### SQL statements:
 ```mysql
 SELECT COUNT(*)
 FROM member;
@@ -120,6 +121,7 @@ UPDATE member SET follower = 50 WHERE id = 104;
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2f735a5e-560f-4cf5-be64-ec45cc578b71)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/203d5439-7551-470e-b329-848e1f1d28ec)
 ## SELECT the sum of follower_count of all the rows from the member table
+### SQL statements:
 ```mysql
 SELECT SUM(follower) AS follower_count
 FROM member;
@@ -127,6 +129,7 @@ FROM member;
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/414ed144-f4b6-4666-a22b-24342cef99c4)
 ## SELECT the average of follower_count of all the rows from the member table
+### SQL statements:
 ```mysql
 SELECT AVG(follower) AS follower_average
 FROM member;
@@ -134,6 +137,7 @@ FROM member;
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/31d2d413-4010-40f1-83c3-b688e7dc540f)
 ## SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table
+### SQL statements:
 ```mysql
 SELECT AVG(follower)
 FROM (
@@ -151,6 +155,7 @@ LIMIT 0, 2) AS follower_average;
 | content | varchar(255) | not null | Content |
 | like_count | int unsigned | not null, default to 0 | Like Count |
 | time | datetime | not null, default to current time | Publish Time |
+### SQL statements:
 ```mysql
 CREATE TABLE message (id BIGINT PRIMARY KEY AUTO_INCREMENT, member_id BIGINT NOT NULL,
 content VARCHAR(255) NOT NULL, like_count INT UNSIGNED NOT NULL DEFAULT 0,
@@ -161,6 +166,7 @@ FOREIGN KEY(member_id) REFERENCES member(id));
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7b71fe83-44b2-480f-b206-500411335b12)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1553400f-43ec-4229-a999-1189c7f22687)
 ## INSERT new data to message
+### SQL statements:
 ```mysql
 INSERT INTO message (id, member_id, content, like_count)
 VALUES (10000, 100, "test test", 1),
@@ -173,6 +179,7 @@ VALUES (10000, 100, "test test", 1),
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/dbf5a2ce-f234-4294-a051-301e85eb422d)
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3044963c-6441-4ffd-bc46-e0c2d67d2960)
 ## SELECT all messages, including sender names. We have to JOIN the member table to get that
+### SQL statements:
 ```mysql
 SELECT message.*, member.name
 FROM message
@@ -180,3 +187,13 @@ JOIN member ON message.member_id = member.id;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2ef19837-12af-492f-808f-1d7ecb9394e9)
+## SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that
+### SQL statements:
+```mysql
+SELECT message.*, member.name
+FROM message
+JOIN member ON message.member_id = member.id
+WHERE member.username = "test";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1ec754d6-8a3c-492e-998b-dd2b929f3d58)
