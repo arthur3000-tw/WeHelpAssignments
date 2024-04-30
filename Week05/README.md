@@ -109,3 +109,11 @@ FROM member;
 ```
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2a5505df-92fe-436d-8f66-1eafbe4bf40b)
+## SELECT the sum of follower_count of all the rows from the member table
+```mysql
+SELECT SUM(follower) AS follower_count
+FROM member;
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7d8072f3-4ead-4716-8f19-7c386bd16777)
+
