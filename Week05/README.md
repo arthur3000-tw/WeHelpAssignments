@@ -76,3 +76,11 @@ WHERE username = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3d613f3c-2730-4914-8ce9-1e6b04531ab6)
+## SELECT rows where name includes the es keyword
+### SQL statements:
+```mysql
+SELECT * FROM member
+WHERE name LIKE "%es%";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/ee688c3a-e878-4391-be6e-6f95f572902b)
