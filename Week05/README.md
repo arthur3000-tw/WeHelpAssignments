@@ -107,7 +107,7 @@ WHERE username = "test";
 SELECT COUNT(*)
 FROM member;
 ```
-### Screenshots:
+### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2a5505df-92fe-436d-8f66-1eafbe4bf40b)
 ## Update follower
 ```mysql
@@ -124,10 +124,12 @@ UPDATE member SET follower = 50 WHERE id = 104;
 SELECT SUM(follower) AS follower_count
 FROM member;
 ```
-### Screenshots:
+### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/414ed144-f4b6-4666-a22b-24342cef99c4)
 ## SELECT the average of follower_count of all the rows from the member table
 ```mysql
-
+SELECT AVG(follower) AS follower_average
+FROM member;
 ```
-### Screenshots:
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/31d2d413-4010-40f1-83c3-b688e7dc540f)
