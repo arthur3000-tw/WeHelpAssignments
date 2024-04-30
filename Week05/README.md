@@ -197,3 +197,13 @@ WHERE member.username = "test";
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1ec754d6-8a3c-492e-998b-dd2b929f3d58)
+## Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test
+### SQL statements:
+```mysql
+SELECT AVG(message.like_count)
+FROM message
+JOIN member ON message.member_id = member.id
+WHERE member.username = "test";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/461d9634-f282-4e78-b91b-4d535c3a78dd)
