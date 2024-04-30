@@ -109,11 +109,26 @@ FROM member;
 ```
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2a5505df-92fe-436d-8f66-1eafbe4bf40b)
+## Update follower
+## SELECT how many rows from the member table
+```mysql
+UPDATE member SET follower = 100 WHERE id = 101;
+UPDATE member SET follower = 200 WHERE id = 102;
+UPDATE member SET follower = 150 WHERE id = 103;
+UPDATE member SET follower = 50 WHERE id = 104;
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2f735a5e-560f-4cf5-be64-ec45cc578b71)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/203d5439-7551-470e-b329-848e1f1d28ec)
 ## SELECT the sum of follower_count of all the rows from the member table
 ```mysql
 SELECT SUM(follower) AS follower_count
 FROM member;
 ```
 ### Screenshots:
-![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7d8072f3-4ead-4716-8f19-7c386bd16777)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/414ed144-f4b6-4666-a22b-24342cef99c4)
+## SELECT the average of follower_count of all the rows from the member table
+```mysql
 
+```
+### Screenshots:
