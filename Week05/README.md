@@ -133,3 +133,30 @@ FROM member;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/31d2d413-4010-40f1-83c3-b688e7dc540f)
+## SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table
+```mysql
+SELECT AVG(follower)
+FROM (
+SELECT follower FROM member
+ORDER BY follower DESC
+LIMIT 0, 2) AS follower_average;
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e51226f2-3bbf-4d00-8fc0-503a23a49950)
+## Create a new table named message, in the website database. designed as below
+| Column Name | Data Type | Additional Settings | Description |
+| ----------- | --------- | ------------------- | ----------- |
+| id | bigint | primary key, auto increment | Unique ID |
+| member_id | bigint | not null, foreign key refer to id column in the member table | Member ID for Message Sender |
+| content | varchar(255) | not null | Content |
+| like_count | int unsigned | not null, default to 0 | Like Count |
+| time | datetime | not null, default to current time | Publish Time |
+```mysql
+CREATE TABLE message (id BIGINT PRIMARY KEY AUTO_INCREMENT, member_id BIGINT NOT NULL,
+content VARCHAR(255) NOT NULL, like_count INT UNSIGNED NOT NULL DEFAULT 0,
+time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY(member_id) REFERENCES member(id));
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/7b71fe83-44b2-480f-b206-500411335b12)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1553400f-43ec-4229-a999-1189c7f22687)
