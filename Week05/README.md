@@ -181,7 +181,7 @@ VALUES (10000, 100, "test test", 1),
 ## SELECT all messages, including sender names. We have to JOIN the member table to get that
 ### SQL statements:
 ```mysql
-SELECT  member.name, message.*
+SELECT member.name, message.*
 FROM message
 JOIN member ON message.member_id = member.id;
 ```
