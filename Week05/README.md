@@ -181,22 +181,22 @@ VALUES (10000, 100, "test test", 1),
 ## SELECT all messages, including sender names. We have to JOIN the member table to get that
 ### SQL statements:
 ```mysql
-SELECT message.*, member.name
+SELECT  member.name, message.*
 FROM message
 JOIN member ON message.member_id = member.id;
 ```
 ### Screenshot:
-![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2ef19837-12af-492f-808f-1d7ecb9394e9)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/ef35e380-dd28-4070-bdeb-49ab53c07716)
 ## SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that
 ### SQL statements:
 ```mysql
-SELECT message.*, member.name
+SELECT member.name, message.* 
 FROM message
 JOIN member ON message.member_id = member.id
 WHERE member.username = "test";
 ```
 ### Screenshot:
-![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1ec754d6-8a3c-492e-998b-dd2b929f3d58)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/07062ea6-9357-41f4-8d90-0b078677f220)
 ## Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test
 ### SQL statements:
 ```mysql
