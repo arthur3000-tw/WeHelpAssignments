@@ -1,44 +1,78 @@
-* Create a new database named website.
-
-  SQL statements:
-  ```mysql
-  CREATE DATABASE website;
-  ```
-  Screenshot:
-  
-  ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/16833a7a-65af-4671-b445-7461dc449b17)
-* Create a new table named member, in the website database, designed as below:
-  
-  | Colunm Name | Data Type | Additional Settings | Description |
-  | ----------- | --------- | ------------------- | ----------- |
-  | id | bigint | primary key, auto increment | Unique ID |
-  | name | varchar(255) | not null | Name |
-  | username | varchar(255) | not null | Username |
-  | password | varchar(255) | not null | Password |
-  | follower | int unsigned | not null, default to 0 | Follower Count |
-  | time | datetime | not null, default to current time | Signup Time |
-
-  SQL statements:
-  ```mysql
-  CREATE TABLE member (id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL,
-  username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,
-  follower INT UNSIGNED NOT NULL DEFAULT 0,
-  time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
-  ```
-  Screenshots:
-  
-  ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/d7298a4f-cc07-4074-a24c-30c196f06fae)
-  ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/afafd357-55e6-4e64-83cf-b35934d56870)
-
-* INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data.
-
-  SQL statements:
-  ```mysql
-  INSERT INTO member (id, name, username, password)
-  VALUES (100, "test", "test", "test");
-  ```
-  Screenshots:
-
-  ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/01d0f297-c6ab-4515-9e85-6d93a38d20a6)
-  ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1895ec2d-db67-4af1-a11c-d58748944236)
-
+## Create a new database named website
+### SQL statements:
+```mysql
+CREATE DATABASE website;
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/16833a7a-65af-4671-b445-7461dc449b17)
+## Create a new table named member, in the website database, designed as below
+| Colunm Name | Data Type | Additional Settings | Description |
+| ----------- | --------- | ------------------- | ----------- |
+| id | bigint | primary key, auto increment | Unique ID |
+| name | varchar(255) | not null | Name |
+| username | varchar(255) | not null | Username |
+| password | varchar(255) | not null | Password |
+| follower | int unsigned | not null, default to 0 | Follower Count |
+| time | datetime | not null, default to current time | Signup Time |
+### SQL statements:
+```mysql
+CREATE TABLE member (id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL,
+username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,
+follower INT UNSIGNED NOT NULL DEFAULT 0,
+time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/d7298a4f-cc07-4074-a24c-30c196f06fae)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/afafd357-55e6-4e64-83cf-b35934d56870)
+## INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data
+### SQL statements:
+```mysql
+INSERT INTO member (id, name, username, password)
+VALUES (100, "test", "test", "test");
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/01d0f297-c6ab-4515-9e85-6d93a38d20a6)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/1895ec2d-db67-4af1-a11c-d58748944236)
+### SQL statements:
+```mysql
+INSERT INTO member (id, name, username, password)
+VALUES (101, "best","best","best"),
+       (102, "john","john","john"),
+       (103, "tom","tom","tom"),
+       (104, "james","james","james");
+```
+### Screenshots:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/b5d75ebe-82a9-4d7c-8da1-baa25ed47c38)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e9501073-e5dc-40e8-b078-32c459b6cf21)
+## SELECT all rows from the member table
+### SQL statements:
+```mysql
+SELECT * FROM member;
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/e9501073-e5dc-40e8-b078-32c459b6cf21)
+## SELECT all rows from the member table, in descending order of time
+### SQL statements:
+```mysql
+SELECT * FROM member
+ORDER BY time DESC;
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/f2c9d8f6-866f-42ef-bf14-359210288c06)
+## SELECT total 3 rows, second to fourth, from the member table, in descending order of time. Note: it does not mean SELECT rows where id are 2, 3, or 4
+### SQL statements:
+```mysql
+SELECT * FROM member
+ORDER BY time DESC
+LIMIT 1, 3;
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/0a6e18c1-6a7f-4704-a7ba-c56c450d748e)
+## SELECT rows where username equals to test
+### SQL statements:
+```mysql
+SELECT * FROM member
+WHERE username = "test";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3d613f3c-2730-4914-8ce9-1e6b04531ab6)
