@@ -110,7 +110,6 @@ FROM member;
 ### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2a5505df-92fe-436d-8f66-1eafbe4bf40b)
 ## Update follower
-## SELECT how many rows from the member table
 ```mysql
 UPDATE member SET follower = 100 WHERE id = 101;
 UPDATE member SET follower = 200 WHERE id = 102;
