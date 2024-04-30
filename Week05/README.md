@@ -174,6 +174,9 @@ VALUES (10000, 100, "test test", 1),
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/3044963c-6441-4ffd-bc46-e0c2d67d2960)
 ## SELECT all messages, including sender names. We have to JOIN the member table to get that
 ```mysql
-
+SELECT message.*, member.name
+FROM message
+JOIN member ON message.member_id = member.id;
 ```
-### Screenshots:
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/2ef19837-12af-492f-808f-1d7ecb9394e9)
