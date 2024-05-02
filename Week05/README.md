@@ -238,5 +238,5 @@ EXPLAIN SELECT * FROM member WHERE username="test" AND password="test";
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/d94aa638-1910-454f-9b89-c2b185b9226b)
 ### Without INDEX:
-![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/6ae09fbf-12b3-481a-8dc6-d7dfe33a6239)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/da82404a-ec2d-4ade-914d-d1a9ce408c63)
 
