@@ -227,8 +227,9 @@ GROUP BY username;
 ```mysql
 CREATE INDEX idx_username_password ON member (username,password);
 ```
-### Screenshot:
+### Screenshots:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/f8244a5f-4609-4ff1-be31-eafcb3851902)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/152825a5-341f-4555-8428-dee549ffaa66)
 ## Use EXPLAIN for SELECT ... WHERE ...
 ### SQL statements:
 ```mysql
