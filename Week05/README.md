@@ -221,3 +221,21 @@ GROUP BY username;
 ```
 ### Screenshot:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/80bc540b-15bd-4f49-a0d7-be2a15e142dc)
+# MySQL CREATE INDEX Statement
+## CREATE INDEX
+### SQL statements:
+```mysql
+CREATE INDEX idx_username_password ON member (username,password);
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/f8244a5f-4609-4ff1-be31-eafcb3851902)
+## Use EXPLAIN for SELECT ... WHERE ...
+### SQL statements:
+```mysql
+EXPLAIN SELECT * FROM member WHERE username="test" AND password="test";
+```
+### Screenshot:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/6d5812a0-6812-42dd-b5cb-c5d37218af08)
+### Without INDEX:
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/6ae09fbf-12b3-481a-8dc6-d7dfe33a6239)
+
