@@ -236,7 +236,7 @@ CREATE INDEX idx_username_password ON member (username,password);
 EXPLAIN SELECT * FROM member WHERE username="test" AND password="test";
 ```
 ### Screenshot:
-![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/6d5812a0-6812-42dd-b5cb-c5d37218af08)
+![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/d94aa638-1910-454f-9b89-c2b185b9226b)
 ### Without INDEX:
 ![image](https://github.com/arthur3000-tw/WeHelpAssignments/assets/49877804/6ae09fbf-12b3-481a-8dc6-d7dfe33a6239)
 
