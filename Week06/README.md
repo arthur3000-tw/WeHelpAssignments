@@ -19,7 +19,7 @@ time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 | Column Name | Data Type | Additional Settings | Description |
 | ----------- | --------- | ------------------- | ----------- |
 | id | bigint | primary key, auto increment | Unique ID |
-| member_id | bigint | not null, foreign key refer to id column in the member table | Member ID for Message Sender |
+| members_id | bigint | not null, foreign key refer to id column in the member table | Member ID for Message Sender |
 | content | varchar(255) | not null | Content |
 | like_count | int unsigned | not null, default to 0 | Like Count |
 | time | datetime | not null, default to current time | Publish Time |
