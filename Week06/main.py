@@ -285,7 +285,7 @@ async def changename(request: Request, changeName: Annotated[str | None, Form()]
     # 未登入的狀態
     if not username:
         return RedirectResponse("/",  status_code=status.HTTP_303_SEE_OTHER)
-    # 登入狀態，確認密碼
+    # 登入狀態，姓名修改
     else:
         modifyName(username, changeName, request)
         return RedirectResponse("/member", status_code=status.HTTP_303_SEE_OTHER)
