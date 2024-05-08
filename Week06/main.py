@@ -275,7 +275,6 @@ async def deletemember(request: Request, deletePassword: Annotated[str | None, F
             request.session["name"] = None
             removeMember(username)
             return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)
-    pass
 
 
 # 姓名修改 ChangeName Endpoint
