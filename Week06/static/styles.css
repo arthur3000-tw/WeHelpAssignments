@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body header div.banner {
+  background-color: darkblue;
+  text-align: center;
+  color: white;
+  font-size: 32pt;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+body section.signup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body section.signup form div.title {
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.signup form div.text {
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.signup form div.text input.input-box-text {
+  font-size: 15pt;
+  padding: 5pt;
+}
+body section.signup form div.text button.input-box-button {
+  width: 100px;
+  height: 50px;
+  font-size: 14pt;
+}
+body section.signin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body section.signin form div.title {
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.signin form div.text {
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.signin form div.text input.input-box-text {
+  font-size: 15pt;
+  padding: 5pt;
+}
+body section.signin form div.text button.input-box-button {
+  width: 100px;
+  height: 50px;
+  font-size: 14pt;
+}
+body section.content {
+  justify-content: center;
+}
+body section.content div.title {
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.content div.text {
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.content section.delete-text form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body section.content section.delete-text form div.text {
+  font-size: 12pt;
+}
+body section.content section.delete-text form div.text input {
+  font-size: 12pt;
+  padding: 1px;
+}
+body section.content section.delete-text form div.text button {
+  font-size: 10pt;
+  margin-left: 5px;
+}
+body section.message {
+  justify-content: center;
+}
+body section.message div.title {
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.message div.text {
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.message div.text input.input-box-text {
+  font-size: 15pt;
+  padding: 5pt;
+}
+body section.message div.text button.input-box-button {
+  width: 100px;
+  height: 50px;
+  font-size: 14pt;
+}
+body section.change-name {
+  justify-content: center;
+}
+body section.change-name div.title {
+  font-size: 24pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.change-name div.text {
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body section.change-name div.text input.input-box-text {
+  font-size: 15pt;
+  padding: 5pt;
+}
+body section.change-name div.text button.input-box-button {
+  width: 100px;
+  height: 50px;
+  font-size: 14pt;
+}
+body section.bulletin table.messages {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16pt;
+}
+body section.bulletin table.messages td.bulletin-name {
+  font-weight: bold;
+  text-align: right;
+}
+body section.bulletin table.messages td.bullentin-button form button {
+  font-size: 16pt;
+  padding: 1px;
+  margin-left: 5px;
+}/*# sourceMappingURL=styles.css.map */

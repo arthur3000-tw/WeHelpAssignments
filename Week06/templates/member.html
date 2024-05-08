@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員頁面</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='./styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="banner">歡迎光臨，這是會員頁面</div>
+    </header>
+    <section class="content">
+      <div class="title">{{ name }}，歡迎登入系統</div>
+      <div class="text"><a href="./signout">登出系統</a></div>
+      <section class="delete-text">
+        <form
+          action="./deleteMember"
+          method="post"
+          onsubmit="return checkDelete();"
+        >
+          <div class="text">
+            請輸入密碼：<input type="password" name="deletePassword" />
+            <button class="delete-button" type="submit">刪除帳號</button>
+          </div>
+        </form>
+      </section>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="change-name">
+      <form
+        action="./changeName"
+        method="post"
+        onsubmit="return checkChangeName();"
+      >
+        <div class="title">變更姓名</div>
+        <div class="text">
+          姓名 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="changeName"
+            id="change-name"
+            placeholder=""
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">送出</button>
+        </div>
+      </form>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="message">
+      <form
+        action="./createMessage"
+        method="post"
+        onsubmit="return checkMessage();"
+      >
+        <div class="title">快來留言吧</div>
+        <div class="text">
+          內容 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="message"
+            id="signin-message"
+            placeholder=""
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">送出</button>
+        </div>
+      </form>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="bulletin">
+      <table class="messages">
+        {% for message in result %}
+        <tr>
+          <td class="bulletin-name">{{ message[0] }} ：</td>
+          <td class="bulletin-content">{{ message[1] }}</td>
+          {% if message[0] == name %}
+          <td class="bullentin-button">
+            <form action="./deleteMessage" method="post">
+              <button type="submit" name="messageID" value="{{ message[2] }}">
+                X
+              </button>
+            </form>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+  </body>
+  <script>
+    function checkMessage() {
+      if (document.querySelector("#signin-message").value == "") {
+        return false;
+      }
+    }
+    function checkDelete() {
+      if (confirm("確定要刪除帳號？") == false) {
+        return false;
+      }
+    }
+    function checkChangeName() {
+      if (document.querySelector("#change-name").value == "") {
+        return false;
+      }
+    }
+  </script>
+</html>
