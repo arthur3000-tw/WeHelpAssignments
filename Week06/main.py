@@ -33,7 +33,7 @@ mycursor = mydb.cursor()
 # str: password              密碼
 # 輸出 list [status, ...]
 # list: [1]                  表示沒有這個使用者
-# list: [2, name]            表示密碼正確，並且回傳 name
+# list: [2, name, id]        表示密碼正確，並且回傳 name、id
 # list: [3]                  表示密碼錯誤
 # list: [4]                  表示其他狀況
 def checkSignIn(username, password):
@@ -53,7 +53,7 @@ def checkSignIn(username, password):
         # 確認密碼
         # 密碼正確
         if (myresult[0][3] == password):
-            return [2, myresult[0][1]]  # 密碼正確，並且回傳 name
+            return [2, myresult[0][1], myresult[0][0]]  # 密碼正確，並且回傳 name、id
         # 密碼錯誤
         else:
             return [3]  # 密碼錯誤
@@ -93,11 +93,11 @@ def memberSignUp(name, username, password):
 
 # 新增留言 addMessage(message)
 # 輸入
-# str: username
+# str: id
 # str: message
-def addMessage(username, message):
-    command = "INSERT INTO messages (members_id, content) VALUES ((SELECT id FROM members WHERE username = %s) ,%s)"
-    val = (username, message)
+def addMessage(id, message):
+    command = "INSERT INTO messages (members_id, content) VALUES (%s ,%s)"
+    val = (id, message)
     mycursor.execute(command, val)
     mydb.commit()
     return
@@ -180,6 +180,7 @@ async def signin(request: Request, username: Annotated[str | None, Form()] = Non
     elif (result[0] == 2):
         request.session["username"] = username  # 將 username 存入 session
         request.session["name"] = result[1]  # 將 name 存入 session
+        request.session["id"] = result[2]  # 將 id 存入 session
         return RedirectResponse("/member", status_code=status.HTTP_303_SEE_OTHER)
     # 其他狀況，導至首頁
     return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)
@@ -235,7 +236,8 @@ async def createmessage(request: Request, message: Annotated[str | None, Form()]
         return RedirectResponse("/",  status_code=status.HTTP_303_SEE_OTHER)
     # 登入狀態，進行留言
     else:
-        addMessage(username, message)
+        id = request.session.get("id")
+        addMessage(id, message)
         return RedirectResponse("/member", status_code=status.HTTP_303_SEE_OTHER)
 
 
