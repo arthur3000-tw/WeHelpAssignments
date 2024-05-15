@@ -372,7 +372,7 @@ async def memberQuery(request: Request, username):
     checkUsername = request.session.get("username")  # 從 session 中取得 username
     # 未登入的狀態
     if not checkUsername:
-        return RedirectResponse("/",  status_code=status.HTTP_303_SEE_OTHER)
+        return myResponse()
     # 登入狀態，帳號查詢
     else:
         result = searchUsername(username)
@@ -386,7 +386,7 @@ async def nameUpdate(request: Request, updateName: UpdateName):
     checkUsername = request.session.get("username")  # 從 session 中取得 username
     # 未登入的狀態
     if not checkUsername:
-        return RedirectResponse("/",  status_code=status.HTTP_303_SEE_OTHER)
+        return {"error": True}
     # 登入狀態，使用者姓名更改
     else:
         result = modifyName(checkUsername, updateName.name, request)
