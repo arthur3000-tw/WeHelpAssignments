@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>首頁</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='./styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="banner">歡迎光臨，請註冊或登入系統</div>
+    </header>
+    <section class="signup">
+      <form action="./signup" method="post" onsubmit="return checkSignUp();">
+        <div class="title">註冊帳號</div>
+        <div class="text">
+          姓名 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="name"
+            id="signup-name"
+            placeholder="Name"
+            size="30"
+          />
+        </div>
+        <div class="text">
+          帳號 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="username"
+            id="signup-username"
+            placeholder="ID"
+            size="30"
+          />
+        </div>
+        <div class="text">
+          密碼 &nbsp
+          <input
+            type="password"
+            class="input-box-text"
+            name="password"
+            id="signup-password"
+            placeholder="Password"
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">註冊</button>
+        </div>
+      </form>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="signin">
+      <form action="./signin" method="post" onsubmit="return checkSignIn();">
+        <div class="title">登入系統</div>
+        <div class="text">
+          帳號 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="username"
+            id="signin-username"
+            placeholder="ID"
+            size="30"
+          />
+        </div>
+        <div class="text">
+          密碼 &nbsp
+          <input
+            type="password"
+            class="input-box-text"
+            name="password"
+            id="signin-password"
+            placeholder="Password"
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">登入</button>
+        </div>
+      </form>
+    </section>
+  </body>
+  <script>
+    // 確認註冊時，姓名、帳號或密碼是否空白
+    function checkSignUp() {
+      let checkSignUpName = document.querySelector("#signup-name").value;
+      let checkSignUpID = document.querySelector("#signup-username").value;
+      let checkSignUpPW = document.querySelector("#signup-password").value;
+      if (checkSignUpName == "" || checkSignUpID == "" || checkSignUpPW == "") {
+        window.alert("姓名、帳號或密碼空白！");
+        return false;
+      }
+    }
+    // 確認登入時，帳號密碼是否空白
+    function checkSignIn() {
+      let checkSignInID = document.querySelector("#signin-username").value;
+      let checkSignInPW = document.querySelector("#signin-password").value;
+      if (checkSignInID == "" || checkSignInPW == "") {
+        window.alert("帳號或密碼空白！");
+        return false;
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員頁面</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='./styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="banner">歡迎光臨，這是會員頁面</div>
+    </header>
+    <section class="content">
+      <div class="title" id="title-name">{{ name }}，歡迎登入系統</div>
+      <div class="text"><a href="./signout">登出系統</a></div>
+      <section class="delete-text">
+        <form
+          action="./deleteMember"
+          method="post"
+          onsubmit="return checkDelete();"
+        >
+          <div class="text">
+            請輸入密碼：<input type="password" name="deletePassword" />
+            <button class="delete-button" type="submit">刪除帳號</button>
+          </div>
+        </form>
+      </section>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="search-name">
+      <div class="title">查詢會員姓名</div>
+      <div class="text">
+        <input
+          type="text"
+          class="input-search-name"
+          name="searchName"
+          id="search-name"
+          placeholder=""
+          size="30"
+        />
+        <button class="button-search-name" onclick="searchUserName();">
+          查詢
+        </button>
+      </div>
+      <div>&nbsp</div>
+      <div class="result" id="search-name-result" style="visibility: hidden">
+        結果
+      </div>
+    </section>
+    <div>&nbsp</div>
+    <section class="update-name">
+      <div class="title">更新我的姓名</div>
+      <div class="text">
+        <input
+          type="text"
+          class="input-update-name"
+          id="update-name"
+          placeholder=""
+          size="30"
+        />
+        <button class="button-upadate-name" onclick="updateName();">
+          更新
+        </button>
+      </div>
+      <div>&nbsp</div>
+      <div class="result" id="update-name-result" style="visibility: hidden">
+        結果
+      </div>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="change-name">
+      <form
+        action="./changeName"
+        method="post"
+        onsubmit="return checkChangeName();"
+      >
+        <div class="title">變更姓名</div>
+        <div class="text">
+          姓名 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="changeName"
+            id="change-name"
+            placeholder=""
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">送出</button>
+        </div>
+      </form>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="message">
+      <form
+        action="./createMessage"
+        method="post"
+        onsubmit="return checkMessage();"
+      >
+        <div class="title">快來留言吧</div>
+        <div class="text">
+          內容 &nbsp
+          <input
+            type="text"
+            class="input-box-text"
+            name="message"
+            id="signin-message"
+            placeholder=""
+            size="30"
+          />
+        </div>
+        <div class="text">
+          <button type="submit" class="input-box-button">送出</button>
+        </div>
+      </form>
+    </section>
+    <div>&nbsp</div>
+    <hr />
+    <div>&nbsp</div>
+    <section class="bulletin">
+      <table class="messages">
+        {% for message in result %}
+        <tr>
+          <td class="bulletin-name" id="bulletin-name">
+            {{ message["name"] }}
+          </td>
+          <td class="bulletin-content">： {{ message["content"] }}</td>
+          {% if message["name"] == name %}
+          <td class="bullentin-button">
+            <form action="./deleteMessage" method="post">
+              <button
+                type="submit"
+                name="messageID"
+                value="{{ message['id'] }}"
+              >
+                X
+              </button>
+            </form>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+  </body>
+  <script>
+    // 確認留言內容是否為空值
+    function checkMessage() {
+      if (document.querySelector("#signin-message").value == "") {
+        return false;
+      }
+    }
+    // 確認是否要刪除帳號
+    function checkDelete() {
+      if (confirm("確定要刪除帳號？") == false) {
+        return false;
+      }
+    }
+    // 確認更改姓名是否為空值
+    function checkChangeName() {
+      if (document.querySelector("#change-name").value == "") {
+        return false;
+      }
+    }
+    // 搜尋使用者姓名，使用 query string 的方式，搜尋使用者名稱
+    async function searchUserName() {
+      // 選取 input element
+      let username = document.querySelector("#search-name").value;
+      // 選取顯示結果 element
+      let search_name = document.querySelector("#search-name-result");
+      // 將結果顯示
+      if (search_name.style.visibility == "hidden") {
+        search_name.style.visibility = "visible";
+      }
+      // 向後端發出 request
+      await fetch("http://127.0.0.1:8000/api/member?username=" + username)
+        // 後端發回 response
+        .then(function (response) {
+          return response.json();
+        })
+        // 取得 response body
+        .then(function (data) {
+          if (data["data"] != null) {
+            // 顯示查詢結果： name (username)
+            search_name.textContent =
+              data["data"]["name"] + " (" + data["data"]["username"] + ")";
+          } else {
+            // 無符合結果，顯示： No Data
+            search_name.textContent = "No Data";
+          }
+        });
+    }
+    // 更改使用者姓名，使用 patch 的方式，傳送資訊
+    async function updateName() {
+      // 選取 input element
+      let name = document.querySelector("#update-name").value;
+      // 選取顯示結果 element
+      let update_name = document.querySelector("#update-name-result");
+      // 選取 title 顯示 name 的 element
+      let title_name = document.querySelector("#title-name");
+      // 選取留言區顯示 name 的 element
+      let bulletin_name = document.querySelector("#bulletin-name");
+      // 將結果顯示
+      if (update_name.style.visibility == "hidden") {
+        update_name.style.visibility = "visible";
+      }
+      // 若輸入姓名為空值
+      if (name == "") {
+        update_name.textContent = "請輸入姓名";
+        return false;
+      } else {
+        // 向後端發出 request，使用 patch method
+        await fetch("http://127.0.0.1:8000/api/member", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          // 把 {"name": "新的使用者姓名"} 放到 request body 中傳送給後端
+          body: JSON.stringify({ name: name }),
+        })
+          // 後端發回 response
+          .then(function (response) {
+            return response.json();
+          })
+          // 取得 response body
+          .then(function (data) {
+            // 解析結果
+            if (Object.keys(data)[0] == "ok") {
+              // 將結果顯示
+              update_name.textContent = "更新成功";
+              // 標題 name 更改
+              title_name.textContent = name + "，歡迎登入系統";
+              // 留言板 name 更改
+              bulletin_name.textContent = name;
+            } else {
+              // 結果顯示
+              update_name.textContent = "更新失敗";
+            }
+          });
+      }
+    }
+  </script>
+</html>

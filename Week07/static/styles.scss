@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  header {
+    div.banner {
+      background-color: darkblue;
+      text-align: center;
+      color: white;
+      font-size: 32pt;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  section.signup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    form {
+      div.title {
+        font-size: 24pt;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      div.text {
+        font-size: 20pt;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        input.input-box-text {
+          font-size: 15pt;
+          padding: 5pt;
+        }
+        button.input-box-button {
+          width: 100px;
+          height: 50px;
+          font-size: 14pt;
+        }
+      }
+    }
+  }
+  section.signin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    form {
+      div.title {
+        font-size: 24pt;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      div.text {
+        font-size: 20pt;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        input.input-box-text {
+          font-size: 15pt;
+          padding: 5pt;
+        }
+        button.input-box-button {
+          width: 100px;
+          height: 50px;
+          font-size: 14pt;
+        }
+      }
+    }
+  }
+  section.content {
+    // display: flex;
+    // flex-wrap: wrap;
+    justify-content: center;
+    div.title {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    div.text {
+      font-size: 20pt;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    section.delete-text {
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        div.text {
+          font-size: 12pt;
+          input {
+            font-size: 12pt;
+            padding: 1px;
+          }
+          button {
+            font-size: 10pt;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+  section.message {
+    justify-content: center;
+    div.title {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    div.text {
+      font-size: 20pt;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      input.input-box-text {
+        font-size: 15pt;
+        padding: 5pt;
+      }
+      button.input-box-button {
+        width: 100px;
+        height: 50px;
+        font-size: 14pt;
+      }
+    }
+  }
+  section.change-name {
+    justify-content: center;
+    div.title {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    div.text {
+      font-size: 20pt;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      input.input-box-text {
+        font-size: 15pt;
+        padding: 5pt;
+      }
+      button.input-box-button {
+        width: 100px;
+        height: 50px;
+        font-size: 14pt;
+      }
+    }
+  }
+  section.bulletin {
+    // border: 2px solid red;
+    table.messages {
+      // border: 1px solid black;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 16pt;
+      td.bulletin-name {
+        // border: 1px solid black;
+        font-weight: bold;
+        text-align: right;
+      }
+      td.bullentin-button {
+        form {
+          button {
+            font-size: 16pt;
+            padding: 1px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+  section.search-name {
+    div.title {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    div.text {
+      text-align: center;
+      input.input-search-name {
+        font-size: 15pt;
+        padding: 5pt;
+      }
+      button {
+        width: 90px;
+        height: 40px;
+        font-size: 14pt;
+      }
+    }
+    div.result {
+      text-align: center;
+      font-size: 20pt;
+    }
+  }
+  section.update-name {
+    div.title {
+      font-size: 24pt;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    div.text {
+      text-align: center;
+      input.input-update-name {
+        font-size: 15pt;
+        padding: 5pt;
+      }
+      button {
+        width: 90px;
+        height: 40px;
+        font-size: 14pt;
+      }
+    }
+    div.result {
+      text-align: center;
+      font-size: 20pt;
+    }
+  }
+}
