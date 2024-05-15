@@ -372,6 +372,7 @@ async def memberQuery(request: Request, username):
     checkUsername = request.session.get("username")  # 從 session 中取得 username
     # 未登入的狀態
     if not checkUsername:
+         # 回傳 {"data":null}
         return myResponse()
     # 登入狀態，帳號查詢
     else:
@@ -386,6 +387,7 @@ async def nameUpdate(request: Request, updateName: UpdateName):
     checkUsername = request.session.get("username")  # 從 session 中取得 username
     # 未登入的狀態
     if not checkUsername:
+        # 回傳 {"error": True}
         return {"error": True}
     # 登入狀態，使用者姓名更改
     else:
